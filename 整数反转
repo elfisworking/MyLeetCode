@@ -1,0 +1,17 @@
+class Solution {
+    public int reverse(int x) {
+             if(x>=0&&x<10) return x;
+         char [] c=(x+"").toCharArray();
+            String s="";
+         // 先不考虑负号问题  
+        if (x<0)  //数字的反转
+         for(int i=1;i<c.length;i++) s=c[i]+s;
+        else
+           for(int i=0;i<c.length;i++) s=c[i]+s;
+        //处理正负号
+        if(x<0)  s=c[0]+s;
+         //判断是否越界  自动处理000这种情况
+         if(Long.valueOf(s)<-2147483648||Long.valueOf(s)>2147483647) return 0; 
+         return Integer.valueOf(s); //会帮忙处理  0001这种情况
+    }
+}
