@@ -1,0 +1,15 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        //回文数及反转相减为0
+        //负数全部为错 
+        if(x<0)  return false;
+        char [] c=(x+"").toCharArray();
+        String str="";
+        //反转
+        for(int i=0;i<c.length;i++)
+            str=c[i]+str;
+        //使用Long型防止溢出  自动处理 0001为1 
+        if(x-Long.valueOf(str)==0) return true;
+            return false;
+    }
+}
