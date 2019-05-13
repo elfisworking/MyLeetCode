@@ -1,0 +1,19 @@
+//思路:栈的思想，如果符合标准 一系列出栈和入栈后，栈应该为空
+class Solution {
+    public boolean isValid(String s) {
+       Stack<Character> stack=new Stack<>();
+        char [] chars=s.toCharArray();
+        for(char currChar:chars){
+            if(stack.isEmpty())
+                stack.push(currChar);
+            else if(isMatch(stack.peek(),currChar))
+                stack.pop();
+            else
+                stack.push(currChar);
+        }
+        return stack.isEmpty();
+    }
+    public boolean isMatch(char c1,char c2){
+        return (c1 == '(' && c2 == ')') || (c1 == '[' && c2 == ']') || (c1 == '{' && c2 == '}');
+    }
+}
