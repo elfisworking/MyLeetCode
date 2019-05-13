@@ -1,0 +1,24 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        //采用暴力破解的方式
+        if(strs.length==1)
+            return strs[0].toString();
+        StringBuilder sb=new StringBuilder();
+        if(strs.length>1){
+        int len=strs[0].length();
+        for(int i=0;i<len;i++)
+        {
+            char curr=strs[0].charAt(i);
+            //进行匹配从第二字符串开始
+            for(int y=1;y<strs.length;y++)
+            {
+                if(strs[y].length()<=i||strs[y].charAt(i)!=curr)
+                    return sb.toString();
+                if(strs[y].charAt(i)==curr && y==strs.length-1)
+                    sb.append(curr);
+            }
+        }
+    }
+        return sb.toString();
+    }
+}
