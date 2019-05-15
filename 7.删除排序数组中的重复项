@@ -1,0 +1,32 @@
+//事件复杂度有点搞  思路有点直
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int length=0;
+        int temp;
+        for (int  x=0;x<nums.length;x++){
+           temp=x;
+           while ((++temp)!=nums.length){
+
+               if(nums[x]<nums[temp])
+               {
+                   break;
+               }
+           }
+           nums[length]=nums[temp-1];
+            length++;
+           x=temp-1;
+    }
+        return length;
+    }
+}
+
+//改进
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i = 0;
+        for (int n : nums)
+            if (i < 1 || n > nums[i-1])
+                nums[i++] = n;
+        return i;
+    }
+}
