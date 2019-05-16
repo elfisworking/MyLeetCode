@@ -1,0 +1,23 @@
+class Solution {
+    //题目的意思是对序列前一个数进行报数，数列第一项不是1吗，那第二项就报第一项的有1个1，输出11，
+    //然后第三项就在第二项的基础上报数，第二项是11，第三项不就是2个1么，然后输出21。。。
+    public String countAndSay(int n) {
+        if(n==1)
+            return "1";
+        String str=countAndSay(n-1)+"*";  //*号主要是方便处理
+        char [] s=str.toCharArray();
+        StringBuilder strBuilder=new StringBuilder();
+        int count=1;
+        for(int i=0;i<s.length-1;i++){
+            if(s[i]==s[i+1]){
+                count++;
+            }else{
+                strBuilder.append(""+count+s[i]);
+                count=1;
+            }
+        }
+        return strBuilder.toString();
+    }
+}
+    
+    
