@@ -1,0 +1,16 @@
+class Solution {
+    public int mySqrt(int x) {
+        if(x==1) return 1;
+        double first=x/2;//初始值 x0
+        double second=0;   //牛顿迭代法
+        int temp=1;
+        while(Math.abs(first-second)>=1e-6){
+             //开始迭代
+            if(second!=0)
+             first=second;
+             second=(first+x/first)/2;
+            
+        }
+        return (int)second;
+    }
+}
