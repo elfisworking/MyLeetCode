@@ -1,0 +1,13 @@
+class Solution {
+    public int climbStairs(int n) {
+        //动态规划算法  从低向上
+        if(n==1) return 1;
+        int []  dy=new int[n+1];
+        dy[1]=1; //爬到一层有1种方式
+        dy[2]=2;  //爬到二楼有2种方式
+        for(int i=3;i<=n;i++){
+            dy[i]=dy[i-1]+dy[i-2];
+        }
+        return dy[n];
+     }
+}
