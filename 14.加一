@@ -1,0 +1,31 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+         int up=0; //进位
+         int first=1; //第一次循环标志位
+        for(int i=digits.length-1;i>=0;i--){
+            if(first==1&&digits[i]==9){  //个位
+                digits[i]=0;
+                up=1;
+            }
+            else if(digits[i]==9&&up==1){  //有进位的情况
+                digits[i]=0;
+                    up=1;
+                }
+            else{  //一般的情况
+                digits[i]+=1;
+                up=0;
+                break;
+            }
+        }
+        if(up==1)// 最高位任然显示进位  则说明要增加改变数组长度
+        {
+            int [] arr=new int[digits.length+1];
+                arr[0]=1;
+                for(int i=1;i<arr.length;i++)
+                    arr[i]=digits[i-1];
+            return arr;
+        }
+        else
+        return digits;
+    }
+}
