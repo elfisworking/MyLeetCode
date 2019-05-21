@@ -1,0 +1,23 @@
+//从低向上的动态规划实现
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+      List<List<Integer>>  list=new ArrayList<>();
+        if(numRows==0) return list;
+        List<Integer> firstList=new ArrayList<>();
+        firstList.add(1);
+        list.add(firstList);
+        for(int i=1;i<numRows;i++){
+              List<Integer>  nowList=new ArrayList<>();
+              List<Integer>  preList=list.get(i-1); 
+              nowList.add(1);
+              for(int y=1;y<i;y++){
+                  nowList.add(preList.get(y-1)+preList.get(y));
+              }
+              nowList.add(1);
+            list.add(nowList);
+            
+        }
+        return list;
+    }
+    
+}
