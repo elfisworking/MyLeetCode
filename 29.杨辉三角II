@@ -1,0 +1,34 @@
+//效率极其低下
+class Solution {
+    public List<Integer> getRow(int rowIndex) {
+         List<Integer> preList=new ArrayList<>();
+        preList.add(1);
+        for(int x=1;x<rowIndex+1;x++){
+              List<Integer> tempList=new ArrayList<>();
+                tempList.add(1);
+            for(int y=1;y<x;y++){
+                tempList.add(preList.get(y-1) + preList.get(y));
+            }
+            tempList.add(1);
+            preList = tempList;
+        }
+        return preList;
+    }
+}
+
+
+1 个月前
+/**
+ * 获取杨辉三角的指定行
+ * 直接使用组合公式C(n,i) = n!/(i!*(n-i)!)
+ * 则第(i+1)项是第i项的倍数=(n-i)/(i+1);
+ */
+public List<Integer> getRow(int rowIndex) {
+        List<Integer> res = new ArrayList<>(rowIndex + 1);
+        long cur = 1;
+        for (int i = 0; i <= rowIndex; i++) {
+            res.add((int) cur);
+            cur = cur * (rowIndex-i)/(i+1);
+        }
+        return res; 
+}
