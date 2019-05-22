@@ -1,3 +1,4 @@
+//只要它一直涨 那么利益就一直增加  这样把连续的增长看成了一段一段的增长  类似贪心
 class Solution {
     public int maxProfit(int[] prices) {
         int profit=0;
