@@ -1,4 +1,5 @@
 //快慢指针的方式
+//假若爱有天意，那快慢指针终会相遇
 public class Solution {
     public boolean hasCycle(ListNode head) {
        if (head == null || head.next == null) {
