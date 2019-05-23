@@ -1,0 +1,39 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+     if(headA==null || headB==null) return null;
+        ListNode last=headB;  //找到B链表的最后一个节点 将B链表变为一个环
+        while(last.next!=null){
+            last=last.next;
+        }
+        last.next=headB;
+        ListNode slow=headA;
+        ListNode fast=headA;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){//含有环
+                slow=headA;  //此时根据数学推导可知 相遇的地方到交点的距离等于从HeadA到交点的距离
+                while(slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                }
+            last.next=null;
+             return fast;
+            }
+        
+        }
+    last.next = null;
+         return null;
+    }
+}
