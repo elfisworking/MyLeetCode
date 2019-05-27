@@ -1,0 +1,30 @@
+//使用动态规划算法
+public String longestPalindrome(String s) {
+    if(s==null||s.length()<1)  return "";
+    char[] in = s.toCharArray();  //字符串化为数组
+    int stringLen = s.length();  //求数组长度
+    boolean[][] len = new boolean[stringLen][stringLen];//定义一个二维数组为动态规划做准备
+    int start = 0;  
+    int end = 0;
+    //开始动态规划  从低向上
+    for(int i = 0; i < stringLen; i++) {
+        for(int j = 0; j < stringLen - i; j++) {   //stringlen-i防止出界
+            if(i == 0) {   //第一遍 是每一个单词都是回文串
+                len[j][j] = true;
+            } else if(i == 1) {    //第二遍 每两个相连的同一个单词都是回文串
+                if(in[j] == in[j + 1]) {
+                    len[j][j + 1] = true;
+                }//经过i=0 i=1循环的准备工作  基本可以开始动态规划了
+            } else {   //i>=2走，
+                if(in[j] == in[j + i] && len[j + 1][j + i - 1]) {
+                    len[j][j + i] = true;
+                }
+            }
+            if(len[j][j + i] == true) {  //记录最长字串
+                start = j;
+                end = j + i;
+            }
+        }
+    }
+    return s.substring(start, end + 1);  //end+1不包括索引
+}
