@@ -1,0 +1,19 @@
+class Solution {
+    public String convert(String s, int numRows) {
+
+        if (numRows == 1) return s;
+
+        StringBuilder ret = new StringBuilder();
+        int n = s.length();
+        int cycleLen = 2 * numRows - 2;   //一个Z字行的长度
+         //按行排序
+        for (int i = 0; i < numRows; i++) { //第一个循环 按照行
+            for (int j = 0; j + i < n; j += cycleLen) {
+                ret.append(s.charAt(j + i));
+                if (i != 0 && i != numRows - 1 && j + cycleLen - i < n)  //这是对中间行的处理i=0为第一行的处理 i=numRows-1是最后一行
+                    ret.append(s.charAt(j + cycleLen - i));
+            }
+        }
+        return ret.toString();
+    }
+}
