@@ -1,0 +1,20 @@
+//双指针方法
+class Solution {
+   public int maxArea(int[] height) {
+        int start = 0, end = height.length - 1, rs = 0, temp = 0;
+	while (start < end) {	//技巧点
+		if (height[start] < height[end]) {
+			temp = height[start] * (end - start);
+			start++;
+		} else {
+			temp = height[end] * (end - start);
+			end--;
+		}
+		if (temp > rs) {
+			rs = temp;
+		}
+	}
+	
+    return rs;
+}
+}
